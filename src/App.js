@@ -1,24 +1,23 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useReducer, useEffect } from "react";
 import "./App.css";
+import StudentsList from "./StudentsList/StudentsList";
+import AgeList from "./AgeList/AgeList";
+import LevelList from "./LevelList/LevelList";
+import reducer from "./State/reducer";
+import initialState from "./State/initialState";
 
+// Container - Component with state
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState());
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code> src / App.js </code> and save to reload.{" "}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* studentslist */}
+      <StudentsList students={state} className="students__component" />
+      {/* age list */}
+      <AgeList className="age__component" />
+      {/* Level */}
+      <LevelList className="level__component" />
     </div>
   );
 }
