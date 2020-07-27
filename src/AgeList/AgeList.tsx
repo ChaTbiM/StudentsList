@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import style from "./AgesList.css.js";
-
-import { IStudent, IAgeListItemProps } from "../interfaces";
-
+import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentAge } from "../store/action.ts";
+import { IStudent, IAgeListItemProps } from "../interfaces";
+import style from "./AgesList.css.js";
 
 const AgeList: React.FC<{
   dispatch: Dispatch;

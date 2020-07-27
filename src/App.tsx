@@ -1,9 +1,6 @@
-import React, { FC, useReducer, useEffect } from "react";
+import React, { FC, useReducer } from "react";
 
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import { Container, CssBaseline, Grid, Paper } from "@material-ui/core";
 
 import StudentsList from "./StudentsList/StudentsList.tsx";
 import AgeList from "./AgeList/AgeList.tsx";
