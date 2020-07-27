@@ -25,7 +25,7 @@ export default function initialState() {
       },
       {
         id: 4,
-        fullName: "mustapha chatbi 2 ",
+        fullName: "z-mustapha chatbi 2 ",
         age: 23,
         year: "2nd year",
         isSelected: false,

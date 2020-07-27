@@ -14,7 +14,11 @@ import style from "./StudentsList.css.js";
 import { IStudent, Dispatch, IStudentListItemProps } from "../interfaces.js";
 import initialState from "../store/initialState.js";
 // constants
-import { searchStudent } from "../store/action.js";
+import {
+  searchStudent,
+  sortAscStudents,
+  sortDescStudents,
+} from "../store/action.ts";
 
 const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
   students,
@@ -47,6 +51,16 @@ const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
     searchStudent(dispatch, initialStudents, searchedName);
   };
 
+  const sortAscHandler = (dispatch: Dispatch, students: IStudent[]) => {
+    console.log(students, "students asc");
+    sortAscStudents(dispatch, students);
+  };
+
+  const sortDescHandler = (dispatch: Dispatch, students: IStudent[]) => {
+    console.log(students, "students asc");
+    sortDescStudents(dispatch, students);
+  };
+
   return (
     <div className={classes.students__container}>
       <form className={classes.students__form} noValidate autoComplete="off">
@@ -58,10 +72,10 @@ const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
         />
 
         <div className={classes.students__sort}>
-          <Button>
+          <Button onClick={() => sortAscHandler(dispatch, students)}>
             <ArrowUpwardIcon />
           </Button>
-          <Button>
+          <Button onClick={() => sortDescHandler(dispatch, students)}>
             <ArrowDownwardIcon />
           </Button>
         </div>
