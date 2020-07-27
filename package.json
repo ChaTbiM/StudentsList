@@ -12,7 +12,8 @@
     "@types/react-dom": "^16.9.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,7 +37,6 @@
     ]
   },
   "devDependencies": {
-    "fast-clone": "^1.5.13",
-    "typescript": "^3.9.7"
+    "fast-clone": "^1.5.13"
   }
 }
