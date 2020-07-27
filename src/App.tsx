@@ -10,8 +10,8 @@ import AgeList from "./AgeList/AgeList.tsx";
 import LevelList from "./LevelList/LevelList";
 import reducer from "./store/reducer";
 import initialState from "./store/initialState";
-import style from "./App.css.js";
 
+import style from "./App.css.js";
 // Container - Component with state
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState());

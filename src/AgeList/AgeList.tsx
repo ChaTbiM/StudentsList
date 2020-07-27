@@ -26,6 +26,7 @@ const AgeList: React.FC<{
 
   const classes = style();
   const ages: number[] = Array.from(Array(50).keys());
+  ages.shift();
   const renderAgeList: JSX.Element[] = ages.map(
     (age: number, index: number) => {
       const listItemProps: IAgeListItemProps = {
