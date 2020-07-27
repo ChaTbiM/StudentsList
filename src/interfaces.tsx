@@ -23,3 +23,8 @@ export interface IStudentListItemProps {
   key: string;
   name: string;
 }
+
+export interface IAgeListItemProps {
+  key: string;
+  age: number;
+}

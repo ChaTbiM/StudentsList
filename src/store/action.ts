@@ -1,5 +1,13 @@
 import { Dispatch, IStudent } from "./../interfaces";
-import { SEARCH_STUDENT, SORT_ASC, SORT_DES } from "./constants";
+import {
+  SEARCH_STUDENT,
+  SORT_ASC,
+  SORT_DES,
+  CHANGE_STUDENT_AGE,
+  SELECT_STUDENT,
+} from "./constants";
+import StudentsListCss from "../StudentsList/StudentsList.css";
+const clone = require("fast-clone");
 
 export function searchStudent(
   dispatch: Dispatch,
@@ -29,4 +37,20 @@ export function sortDescStudents(dispatch: Dispatch, students: IStudent[]) {
     .reverse();
 
   return dispatch({ type: SORT_DES, payload: sortedStudents });
+}
+
+export function selectStudent(dispatch: Dispatch, selectStudent: number) {
+  return dispatch({ type: SELECT_STUDENT, payload: selectStudent });
+}
+
+export function changeStudentAge(
+  dispatch: Dispatch,
+  students: IStudent[],
+  selectedStudent: number,
+  updatedAge: number
+) {
+  let updatedStudents = clone(students);
+  updatedStudents.find((el) => el.id === selectedStudent).age = updatedAge;
+
+  return dispatch({ type: CHANGE_STUDENT_AGE, payload: updatedStudents });
 }

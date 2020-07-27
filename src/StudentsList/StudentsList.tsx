@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -18,16 +18,18 @@ import {
   searchStudent,
   sortAscStudents,
   sortDescStudents,
+  selectStudent,
 } from "../store/action.ts";
 
-const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
-  students,
-  dispatch,
-}) => {
+const StudentsList: React.FC<{
+  students: IStudent[];
+  dispatch: Dispatch;
+  selectedStudent: number;
+}> = ({ students, dispatch, selectedStudent }) => {
   const classes = style();
 
   const renderStudentsList: JSX.Element[] = students.map(
-    (student: IStudent) => {
+    (student: IStudent, index: number) => {
       const listItemProps: IStudentListItemProps = {
         key: `student-${student.id}`,
         name: student.fullName,
@@ -36,8 +38,12 @@ const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
       return (
         <ListItem
           {...listItemProps}
+          selected={selectedStudent === student.id}
           button
           className={classes.students__list__item}
+          onClick={(event) =>
+            changeSelectedStudentHandler(student.id, dispatch, event)
+          }
         >
           <ListItemText primary={student.fullName} />
         </ListItem>
@@ -57,8 +63,11 @@ const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
   };
 
   const sortDescHandler = (dispatch: Dispatch, students: IStudent[]) => {
-    console.log(students, "students asc");
     sortDescStudents(dispatch, students);
+  };
+
+  const changeSelectedStudentHandler = (id, dispatch, event) => {
+    selectStudent(dispatch, id);
   };
 
   return (
@@ -67,7 +76,7 @@ const StudentsList: React.FC<{ students: IStudent[]; dispatch: Dispatch }> = ({
         <TextField
           onChange={(e) => keypressHandler(dispatch, e)}
           id="outlined-basic"
-          label="Outlined"
+          label="Search Student"
           variant="outlined"
         />
 

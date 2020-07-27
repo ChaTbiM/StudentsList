@@ -1,6 +1,6 @@
 export default function initialState() {
   return {
-    selectedStudent: null,
+    selectedStudent: 1,
     students: [
       {
         id: 1,

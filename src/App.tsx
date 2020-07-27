@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/grid";
 import Paper from "@material-ui/core/paper";
 
 import StudentsList from "./StudentsList/StudentsList.tsx";
-import AgeList from "./AgeList/AgeList";
+import AgeList from "./AgeList/AgeList.tsx";
 import LevelList from "./LevelList/LevelList";
 import reducer from "./store/reducer";
 import initialState from "./store/initialState";
@@ -27,6 +27,7 @@ const App: React.FC = () => {
             <Paper className={classes.paper}>
               <StudentsList
                 students={state.students}
+                selectedStudent={state.selectedStudent}
                 dispatch={dispatch}
                 className="students__component"
               />
@@ -37,7 +38,12 @@ const App: React.FC = () => {
 
           <Grid item xs={4}>
             <Paper className={classes.paper}>
-              <AgeList className="age__component" />
+              <AgeList
+                selectedStudent={state.selectedStudent}
+                students={state.students}
+                dispatch={dispatch}
+                className="age__component"
+              />
             </Paper>
           </Grid>
 
