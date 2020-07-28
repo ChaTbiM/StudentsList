@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
-import { changeStudentAge } from "../store/action.ts";
+import { changeStudentAge } from "../store/action";
 import { IStudent, IAgeListItemProps } from "../interfaces";
 import style from "./AgesList.css.js";
 
