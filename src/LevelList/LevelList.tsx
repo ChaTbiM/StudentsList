@@ -17,6 +17,7 @@ const LevelList: FunctionComponent<{
       let tempYear: string | any = students.find(
         (el) => el.id === selectedStudent
       )?.year;
+      console.log("temp year", tempYear);
       setCurrentYear(tempYear);
     }
   }, [selectedStudent]);
