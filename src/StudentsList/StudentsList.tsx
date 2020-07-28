@@ -27,6 +27,7 @@ const StudentsList: React.FC<{
   students: IStudent[];
   dispatch: Dispatch;
   selectedStudent: number;
+  className: string;
 }> = ({ students, dispatch, selectedStudent }) => {
   const classes = style();
 

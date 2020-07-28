@@ -8,6 +8,7 @@ const AgeList: FunctionComponent<{
   dispatch: Dispatch;
   students: IStudent[];
   selectedStudent: number;
+  className: string;
 }> = ({ dispatch, students, selectedStudent }) => {
   const [currentAge, setCurrentAge] = useState(0);
 

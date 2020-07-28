@@ -8,6 +8,7 @@ const LevelList: FunctionComponent<{
   dispatch: Dispatch;
   students: IStudent[];
   selectedStudent: number;
+  className: string;
 }> = ({ dispatch, students, selectedStudent }) => {
   const [currentYear, setCurrentYear] = useState(0);
 
