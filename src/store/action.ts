@@ -7,7 +7,6 @@ import {
   CHANGE_STUDENT_AGE,
   CHANGE_STUDENT_YEAR,
 } from "./constants";
-import StudentsListCss from "../StudentsList/StudentsList.css";
 const clone = require("fast-clone");
 
 export function searchStudent(
@@ -51,7 +50,9 @@ export function changeStudentAge(
   updatedAge: number
 ) {
   let updatedStudents = clone(students);
-  updatedStudents.find((el) => el.id === selectedStudent).age = updatedAge;
+  updatedStudents.find(
+    (el: IStudent) => el.id === selectedStudent
+  ).age = updatedAge;
 
   return dispatch({ type: CHANGE_STUDENT_AGE, payload: updatedStudents });
 }
@@ -63,7 +64,9 @@ export function changeStudentYear(
   updatedYear: string
 ) {
   let updatedStudents = clone(students);
-  updatedStudents.find((el) => el.id === selectedStudent).age = updatedYear;
+  updatedStudents.find(
+    (el: IStudent) => el.id === selectedStudent
+  ).age = updatedYear;
 
-  return dispatch({ type: CHANGE_STUDENT_AGE, payload: updatedStudents });
+  return dispatch({ type: CHANGE_STUDENT_YEAR, payload: updatedStudents });
 }

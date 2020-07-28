@@ -5,9 +5,9 @@ import {
   SELECT_STUDENT,
   CHANGE_STUDENT_AGE,
   CHANGE_STUDENT_YEAR,
-} from "./constants.ts";
+} from "./constants";
 
-export default function reducer(state, action) {
+export default function reducer(state: any, action: any) {
   switch (action.type) {
     case SEARCH_STUDENT:
       return Object.assign({}, state, {
