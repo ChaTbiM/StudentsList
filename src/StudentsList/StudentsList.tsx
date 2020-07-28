@@ -53,7 +53,10 @@ const StudentsList: React.FC<{
     }
   );
 
-  const keypressHandler = (dispatch: Dispatch, e: Event) => {
+  const keypressHandler = (
+    dispatch: Dispatch,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     let searchedName: any = (e.target as any).value;
     let initialStudents: IStudent[] = initialState().students;
     searchStudent(dispatch, initialStudents, searchedName);

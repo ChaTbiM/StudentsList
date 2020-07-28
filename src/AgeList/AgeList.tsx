@@ -46,7 +46,7 @@ const AgeList: FunctionComponent<{
     dispatch: Dispatch,
     students: IStudent[],
     selectedStudent: number,
-    e: Event
+    e: React.ChangeEvent<HTMLInputElement>
   ): void => {
     let updatedAge: number = (e.target as any).value;
     setCurrentAge(updatedAge);
