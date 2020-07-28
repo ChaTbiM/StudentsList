@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentAge } from "../store/action";
-import { IStudent, IAgeListItemProps } from "../interfaces";
+import { IStudent, IAgeListItemProps, Dispatch } from "../interfaces";
 import style from "./AgesList.css.js";
 
 const AgeList: React.FC<{
