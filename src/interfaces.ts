@@ -10,7 +10,7 @@ export interface IStudent {
   id: number;
   fullName: string;
   year: string;
-  isSelected: boolean;
+  age: number;
 }
 
 export interface IState {

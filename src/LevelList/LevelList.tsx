@@ -1,39 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentYear } from "../store/action";
-import { IStudent, IAgeListItemProps, Dispatch } from "../interfaces";
-import style from "./LevelList.css.ts";
+import { IStudent, Dispatch } from "../interfaces";
+import style from "./LevelList.css";
 
-const LevelList = ({ dispatch, students, selectedStudent }) => {
+const LevelList: FunctionComponent<{
+  dispatch: Dispatch;
+  students: IStudent[];
+  selectedStudent: number;
+}> = ({ dispatch, students, selectedStudent }) => {
   const [currentYear, setCurrentYear] = useState(0);
 
   useEffect(() => {
     if (selectedStudent) {
-      let tempYear = students.find((el) => el.id === selectedStudent).year;
+      let tempYear: string | any = students.find(
+        (el) => el.id === selectedStudent
+      )?.year;
       setCurrentYear(tempYear);
     }
   }, [selectedStudent]);
 
   const classes = style();
-  const years = ["1st", "2nd", "3rd", "4th", "5th"];
-  const renderYearList = years.map((year, index) => {
-    const listItemProps = {
-      key: `year-${index}`,
-      year: year,
-    };
-    return (
-      <FormControlLabel
-        control={<Radio />}
-        label={year}
-        value={year}
-        {...listItemProps}
-        className={classes.level__list__item}
-      />
-    );
-  });
+  const years: string[] = ["1st", "2nd", "3rd", "4th", "5th"];
+  const renderYearList: JSX.Element[] = years.map(
+    (year: string, index: number) => {
+      const listItemProps = {
+        key: `year-${index}`,
+        year: year,
+      };
+      return (
+        <FormControlLabel
+          control={<Radio />}
+          label={year}
+          value={year}
+          {...listItemProps}
+          className={classes.level__list__item}
+        />
+      );
+    }
+  );
 
-  const yearChangeHandler = (dispatch, students, selectedStudent, e) => {
-    let updatedYear = e.target.value;
+  const yearChangeHandler = (
+    dispatch: Dispatch,
+    students: IStudent[],
+    selectedStudent: number,
+    e: Event
+  ): void => {
+    let updatedYear = (e.target as any).value;
     setCurrentYear(updatedYear);
     changeStudentYear(dispatch, students, selectedStudent, updatedYear);
   };

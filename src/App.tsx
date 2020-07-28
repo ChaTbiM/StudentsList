@@ -2,9 +2,9 @@ import React, { FC, useReducer } from "react";
 
 import { Container, CssBaseline, Grid, Paper } from "@material-ui/core";
 
-import StudentsList from "./StudentsList/StudentsList.tsx";
-import AgeList from "./AgeList/AgeList.tsx";
-import LevelList from "./LevelList/LevelList.tsx";
+import StudentsList from "./StudentsList/StudentsList";
+import AgeList from "./AgeList/AgeList";
+import LevelList from "./LevelList/LevelList";
 import reducer from "./store/reducer";
 import initialState from "./store/initialState";
 

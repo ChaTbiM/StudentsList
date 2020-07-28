@@ -8,7 +8,10 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    // "rootDir": "src",
+    "rootDirs": ["src", ""],
+
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,

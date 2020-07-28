@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentAge } from "../store/action";
 import { IStudent, IAgeListItemProps, Dispatch } from "../interfaces";
-import style from "./AgesList.css.js";
+import style from "./AgesList.css";
 
-const AgeList: React.FC<{
+const AgeList: FunctionComponent<{
   dispatch: Dispatch;
   students: IStudent[];
   selectedStudent: number;
@@ -13,9 +13,10 @@ const AgeList: React.FC<{
 
   useEffect(() => {
     if (selectedStudent) {
-      let tempAge: number = Number(
-        students.find((el) => el.id === selectedStudent).age
-      );
+      let tempAge: number | any = students.find(
+        (el) => el.id === selectedStudent
+      )?.age;
+
       setCurrentAge(tempAge);
     }
   }, [selectedStudent]);
@@ -41,8 +42,13 @@ const AgeList: React.FC<{
     }
   );
 
-  const ageChangeHandler = (dispatch, students, selectedStudent, e) => {
-    let updatedAge: number = Number(e.target.value);
+  const ageChangeHandler = (
+    dispatch: Dispatch,
+    students: IStudent[],
+    selectedStudent: number,
+    e: Event
+  ): void => {
+    let updatedAge: number = (e.target as any).value;
     setCurrentAge(updatedAge);
     changeStudentAge(dispatch, students, selectedStudent, updatedAge);
   };
