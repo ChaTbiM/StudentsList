@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import {
   List,
@@ -14,14 +14,14 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import style from "./StudentsList.css.js";
 // interfaces
 import { IStudent, Dispatch, IStudentListItemProps } from "../interfaces.js";
-import initialState from "../store/initialState.js";
+import initialState from "../store/initialState";
 // constants
 import {
   searchStudent,
   sortAscStudents,
   sortDescStudents,
   selectStudent,
-} from "../store/action.ts";
+} from "../store/action";
 
 const StudentsList: React.FC<{
   students: IStudent[];
@@ -35,7 +35,7 @@ const StudentsList: React.FC<{
       const listItemProps: IStudentListItemProps = {
         key: `student-${student.id}`,
         name: student.fullName,
-        id: student.id,
+        id: String(student.id),
       };
       return (
         <ListItem
@@ -54,7 +54,7 @@ const StudentsList: React.FC<{
   );
 
   const keypressHandler = (dispatch: Dispatch, e: Event) => {
-    let searchedName: any = e.target.value;
+    let searchedName: any = (e.target as any).value;
     let initialStudents: IStudent[] = initialState().students;
     searchStudent(dispatch, initialStudents, searchedName);
   };
@@ -68,7 +68,11 @@ const StudentsList: React.FC<{
     sortDescStudents(dispatch, students);
   };
 
-  const changeSelectedStudentHandler = (id, dispatch, event) => {
+  const changeSelectedStudentHandler = (
+    id: number,
+    dispatch: Dispatch,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     selectStudent(dispatch, id);
   };
 

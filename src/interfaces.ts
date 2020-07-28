@@ -19,7 +19,7 @@ export interface IState {
 }
 
 export interface IStudentListItemProps {
-  id: number;
+  id: string;
   key: string;
   name: string;
 }
