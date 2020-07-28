@@ -8,7 +8,7 @@ import LevelList from "./LevelList/LevelList";
 import reducer from "./store/reducer";
 import initialState from "./store/initialState";
 
-import style from "./App.css.js";
+import style from "./App.style";
 // Container - Component with state
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState());
@@ -17,10 +17,16 @@ const App: React.FC = () => {
   return (
     <CssBaseline>
       <Container maxWidth="md" className={classes.App}>
-        <Grid justify="center" container spacing={2} className={classes.root}>
+        <Grid
+          justify="center"
+          alignItems="flex-end"
+          container
+          spacing={2}
+          className={classes.root}
+        >
           {/* studentslist */}
 
-          <Grid item xs={8} md={4}>
+          <Grid item xs={10} md={4}>
             <Paper className={classes.paper}>
               <StudentsList
                 students={state.students}
@@ -33,7 +39,7 @@ const App: React.FC = () => {
 
           {/* age list */}
 
-          <Grid item xs={8} md={4}>
+          <Grid item xs={10} md={4}>
             <Paper className={classes.paper}>
               <AgeList
                 selectedStudent={state.selectedStudent}
@@ -46,7 +52,7 @@ const App: React.FC = () => {
 
           {/* Year */}
 
-          <Grid item xs={8} md={4}>
+          <Grid item xs={10} md={4}>
             <Paper className={classes.paper}>
               <LevelList
                 selectedStudent={state.selectedStudent}

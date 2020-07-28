@@ -13,7 +13,8 @@ export default useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     justifyContent: "center",
     display: "flex",
-    alignItems: "stretch",
+    alignItems: "center",
+    height: "100vh",
   },
   paper: {
     margin: "0 auto",
