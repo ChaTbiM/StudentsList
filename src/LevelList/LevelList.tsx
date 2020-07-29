@@ -4,7 +4,7 @@ import { changeStudentYear } from "../store/action";
 import { Dispatch } from "../interfaces";
 import { IStudent } from "../StudentsList/interfaces";
 import { ILevelListProps, ILevelListItemProps } from "./interfaces";
-import style from "./LevelList.css";
+import style from "./LevelList.style";
 const LevelList: FunctionComponent<ILevelListProps> = ({
   dispatch,
   students,

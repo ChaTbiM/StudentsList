@@ -11,11 +11,11 @@ import {
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
-import style from "./StudentsList.css.js";
+import style from "./StudentsList.style";
 // interfaces
+import { Dispatch } from "../interfaces";
 import {
   IStudent,
-  Dispatch,
   IStudentsListProps,
   IStudentListItemProps,
 } from "./interfaces";
