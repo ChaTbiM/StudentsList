@@ -5,26 +5,3 @@ export interface IAction {
   payload: any;
   error?: any;
 }
-
-export interface IStudent {
-  id: number;
-  fullName: string;
-  year: string;
-  age: number;
-}
-
-export interface IState {
-  selectedStudent: number;
-  students: Array<IStudent>;
-}
-
-export interface IStudentListItemProps {
-  id: string;
-  key: string;
-  name: string;
-}
-
-export interface IAgeListItemProps {
-  key: string;
-  age: number;
-}

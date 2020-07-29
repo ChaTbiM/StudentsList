@@ -9,6 +9,7 @@ import reducer from "./store/reducer";
 import initialState from "./store/initialState";
 
 import style from "./App.style";
+
 // Container - Component with state
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState());

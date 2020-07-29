@@ -1,15 +1,15 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentYear } from "../store/action";
-import { IStudent, Dispatch } from "../interfaces";
+import { Dispatch } from "../interfaces";
+import { IStudent } from "../StudentsList/interfaces";
+import { ILevelListProps, ILevelListItemProps } from "./interfaces";
 import style from "./LevelList.css";
-
-const LevelList: FunctionComponent<{
-  dispatch: Dispatch;
-  students: IStudent[];
-  selectedStudent: number;
-  className: string;
-}> = ({ dispatch, students, selectedStudent }) => {
+const LevelList: FunctionComponent<ILevelListProps> = ({
+  dispatch,
+  students,
+  selectedStudent,
+}) => {
   const [currentYear, setCurrentYear] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const LevelList: FunctionComponent<{
   const years: string[] = ["1st", "2nd", "3rd", "4th", "5th"];
   const renderYearList: JSX.Element[] = years.map(
     (year: string, index: number) => {
-      const listItemProps = {
+      const listItemProps: ILevelListItemProps = {
         key: `year-${index}`,
         year: year,
       };

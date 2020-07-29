@@ -13,7 +13,12 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
 import style from "./StudentsList.css.js";
 // interfaces
-import { IStudent, Dispatch, IStudentListItemProps } from "../interfaces.js";
+import {
+  IStudent,
+  Dispatch,
+  IStudentsListProps,
+  IStudentListItemProps,
+} from "./interfaces";
 import initialState from "../store/initialState";
 // constants
 import {
@@ -23,12 +28,11 @@ import {
   selectStudent,
 } from "../store/action";
 
-const StudentsList: React.FC<{
-  students: IStudent[];
-  dispatch: Dispatch;
-  selectedStudent: number;
-  className: string;
-}> = ({ students, dispatch, selectedStudent }) => {
+const StudentsList: React.FC<IStudentsListProps> = ({
+  students,
+  dispatch,
+  selectedStudent,
+}) => {
   const classes = style();
 
   const renderStudentsList: JSX.Element[] = students.map(
@@ -54,21 +58,21 @@ const StudentsList: React.FC<{
     }
   );
 
-  const keypressHandler = (
+  const searchHandler = (
     dispatch: Dispatch,
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  ): void => {
     let searchedName: any = (e.target as any).value;
     let initialStudents: IStudent[] = initialState().students;
     searchStudent(dispatch, initialStudents, searchedName);
   };
 
-  const sortAscHandler = (dispatch: Dispatch, students: IStudent[]) => {
+  const sortAscHandler = (dispatch: Dispatch, students: IStudent[]): void => {
     console.log(students, "students asc");
     sortAscStudents(dispatch, students);
   };
 
-  const sortDescHandler = (dispatch: Dispatch, students: IStudent[]) => {
+  const sortDescHandler = (dispatch: Dispatch, students: IStudent[]): void => {
     sortDescStudents(dispatch, students);
   };
 
@@ -76,7 +80,7 @@ const StudentsList: React.FC<{
     id: number,
     dispatch: Dispatch,
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  ): void => {
     selectStudent(dispatch, id);
   };
 
@@ -84,7 +88,7 @@ const StudentsList: React.FC<{
     <div className={classes.students__container}>
       <form className={classes.students__form} noValidate autoComplete="off">
         <TextField
-          onChange={(e) => keypressHandler(dispatch, e)}
+          onChange={(e) => searchHandler(dispatch, e)}
           id="outlined-basic"
           label="Search Student"
           variant="outlined"

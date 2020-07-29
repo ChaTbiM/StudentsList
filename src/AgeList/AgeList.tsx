@@ -1,7 +1,9 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import { RadioGroup, Radio, FormControlLabel } from "@material-ui/core";
 import { changeStudentAge } from "../store/action";
-import { IStudent, IAgeListItemProps, Dispatch } from "../interfaces";
+import { Dispatch } from "../interfaces";
+import { IStudent } from "../StudentsList/interfaces";
+import { IAgeListItemProps, IAgeListProps } from "./interfaces";
 import style from "./AgesList.css";
 
 const AgeList: FunctionComponent<{

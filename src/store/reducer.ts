@@ -1,3 +1,5 @@
+import { IAction } from "./../interfaces";
+import { IState } from "./interfaces";
 import {
   SORT_ASC,
   SORT_DES,
@@ -7,7 +9,7 @@ import {
   CHANGE_STUDENT_YEAR,
 } from "./constants";
 
-export default function reducer(state: any, action: any) {
+export default function reducer(state: IState, action: IAction) {
   switch (action.type) {
     case SEARCH_STUDENT:
       return Object.assign({}, state, {

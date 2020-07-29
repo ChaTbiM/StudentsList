@@ -1,4 +1,5 @@
-export default function initialState() {
+import { IState } from "./interfaces";
+export default function initialState(): IState {
   return {
     selectedStudent: 1,
     students: [
